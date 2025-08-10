@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+:root {
+    --rgbaBlack: rgba(0, 0, 0, .6);
+    --rgbaWhite: rgba(255, 255, 255, .5);
+}
