@@ -3,4 +3,17 @@
 :root {
     --rgbaBlack: rgba(0, 0, 0, .6);
     --rgbaWhite: rgba(255, 255, 255, .5);
+    --popsOut: popsOut .5s ease-in-out forwards;
+}
+
+@keyframes popsOut {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
 }

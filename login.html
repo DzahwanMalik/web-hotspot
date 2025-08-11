@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet hotspot - Log in</title>
+
+    <!-- My Own Css -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Link Font Awasome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body class="bg-white relative">
+    <div class="h-screen relative">
+      <!--  -->
+      $(if chap-id)
+      <form
+        name="sendin"
+        action="$(link-login-only)"
+        method="post"
+        style="display: none"
+      >
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+      </form>
+
+      <!-- md5.js -->
+      <script src="/md5.js"></script>
+
+      <!-- DoLogin -->
+      <script>
+        function doLogin() {
+          document.sendin.username.value = document.login.username.value;
+          document.sendin.password.value = hexMD5(
+            "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+          );
+          document.sendin.submit();
+          return false;
+        }
+      </script>
+      
+      <!-- Alert -->
+      <div
+        class="fixed z-50 top-1/2 left-1/2 -translate-1/2 p-5 bg-white shadow-xl rounded-xl font-semibold text-center transition-all duration-300 ease-in-out scale-0"
+        id="alert"
+      >
+        <h1 class="mb-3">Fitur Sedang Dalam Pengembangan!</h1>
+        <button
+          class="px-3 py-1 bg-indigo-500 text-white rounded-md"
+          onclick="closeAlert()"
+        >
+          Close
+        </button>
+      </div>
+
+      <header class="relative w-full aspect-square">
+        <!-- Navbar -->
+        <nav
+          class="absolute z-20 top-0 left-0 w-full p-5 flex justify-between items-center transition-all duration-500 ease-in-out"
+          id="navbar"
+        >
+          <span class="relative">
+            <img src="assets/TARHUD-LOGO.png" alt="" width="100px" />
+          </span>
+          <span class="relative">
+            <ul class="flex gap-2 font-medium text-white text-sm text-center">
+              <li class="border-1 border-white py-1 px-3 rounded-3xl">
+                <button onclick="openMenu()" class="cursor-pointer">Harga</button>
+              </li>
+            </ul>
+          </span>
+        </nav>
+
+        <!-- Menu -->
+        <div
+          class="absolute z-20 w-full bg-linear-to-b from-indigo-800 to-transparent px-5 pt-5 pb-10 transition-all duration-500 ease-in-out -translate-y-full"
+          id="priceMenu"
+        >
+          <ul class="flex gap-2 flex-col">
+            <li class="flex justify-center mb-2">
+              <button
+                class="px-2 py-1 font-bold border-2 border-white rounded-xl text-white cursor-pointer"
+                onclick="closeMenu()"
+              >
+                Kembali
+              </button>
+            </li>
+            <li
+              class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+            >
+              <span class="leading-5">
+                <h1>Paket Hemat</h1>
+                <p>2 Jam</p>
+              </span>
+              <span>
+                <a
+                  href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket hemat 2 jam."
+                  class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                  >Beli Sekarang</a
+                >
+              </span>
+            </li>
+            <li
+              class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+            >
+              <span class="leading-5">
+                <h1>Paket Setengah Hari</h1>
+                <p>6 Jam</p>
+              </span>
+              <span>
+                <a
+                  href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket setengah hari 6 jam."
+                  class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                  >Beli Sekarang</a
+                >
+              </span>
+            </li>
+            <li
+              class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+            >
+              <span class="leading-5">
+                <h1>Paket Seharian</h1>
+                <p>12 Jam</p>
+              </span>
+              <span>
+                <a
+                  href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket seharian 12 jam"
+                  class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                  >Beli Sekarang</a
+                >
+              </span>
+            </li>
+            <li
+              class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+            >
+              <span class="leading-5">
+                <h1>Paket Full Day</h1>
+                <p>24 Jam</p>
+              </span>
+              <span>
+                <a
+                  href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket full day 24 jam"
+                  class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                  >Beli Sekarang</a
+                >
+              </span>
+            </li>
+            <li
+              class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+            >
+              <span class="leading-5">
+                <h1>Paket Streaming</h1>
+                <p>3 Hari</p>
+              </span>
+              <span>
+                <a
+                  href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket streaming 3 hari."
+                  class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                  >Beli Sekarang</a
+                >
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slider main container -->
+        <div class="swiper w-full h-full">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper text-center">
+            <!-- Slides -->
+            <div
+              class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent"
+            >
+              <img
+                src="assets/banner-1.jpg"
+                alt=""
+                class="min-w-full h-full object-center object-cover"
+              />
+            </div>
+            <div
+              class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent"
+            >
+              <img
+                src="assets/banner-2.jpg"
+                alt=""
+                class="min-w-full h-full object-center object-cover"
+              />
+            </div>
+            <div
+              class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent"
+            >
+              <img
+                src="assets/banner-3.jpg"
+                alt=""
+                class="min-w-full h-full object-center object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      $(endif)
+      <main
+        class="relative z-10 bg-white px-7 py-6 rounded-t-3xl -translate-y-13"
+      >
+        <form
+          name="login"
+          action="$(link-login-only)"
+          method="post"
+          $(if
+          chap-id)
+          onSumbit="return doLogin()"
+          $(endif)
+        >
+          <input type="hidden" name="dst" value="$(link-orig)" />
+          <input type="hidden" name="popup" value="true" />
+          <div class="flex gap-5 flex-col">
+            <div>
+              <h1 class="text-3xl font-bold">Selamat Datang</h1>
+              <h2 class="text-xl font-semibold mb-2">
+                Di Layanan Hotspot APJII!
+              </h2>
+              <p class="text-xs text-gray-500">
+                Silahkan Masukkan Code Voucher/Member Anda!
+              </p>
+              <p class="text-center $(if error)alert$(endif) bg-red-300 rounded-xl">
+                $(if error == "")Please log in to use the internet hotspot
+                service $(if trial == 'yes')<br />Free trial available,
+                <a
+                  href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)"
+                  >click here</a
+                >.$(endif) $(endif) $(if error)$(error)$(endif)
+              </p>
+            </div>
+            <div
+              class="relative flex gap-2 justify-evenly items-center text-sm font-semibold"
+              id="containerSwapMode"
+            >
+              <div
+                class="absolute w-20 h-12 bg-indigo-500 rounded-md transition-all duration-500 ease-in-out shadow-xs"
+                id="moving-bg"
+              ></div>
+
+              <button
+                class="relative z-10 cursor-pointer py-2 px-3 transition-all duration-500 ease-in-out"
+                id="voucher"
+              >
+                <i class="fa-solid fa-ticket me-1"></i>
+                <p>Voucher</p>
+              </button>
+              <button
+                class="relative z-10 cursor-pointer py-2 px-3 transition-all duration-500 ease-in-out"
+                id="member"
+              >
+                <i class="fa-solid fa-user me-1"></i>
+                <p>Member</p>
+              </button>
+              <button
+                class="relative z-10 cursor-pointer py-2 px-3 transition-all duration-500 ease-in-out"
+                id="qrCode"
+                onclick="openAlert()"
+              >
+                <i class="fa-solid fa-qrcode me-1"></i>
+                <p>QR Code</p>
+              </button>
+            </div>
+            <div class="flex gap-5 flex-col justify-center h-auto" id="input">
+              <label for="Username" class="relative">
+                <input
+                  type="text"
+                  id="Username"
+                  placeholder=""
+                  name="username"
+                  class="peer w-full rounded border-gray-300 shadow-sm py-2 px-2 focus:outline-indigo-500 sm:text-sm"
+                />
+
+                <span
+                  class="absolute start-3 -translate-y-2 bg-white px-0.5 text-sm font-medium text-gray-700 transition-transform peer-placeholder-shown:translate-y-3 peer-focus:-translate-y-2 peer-focus:text-indigo-500"
+                >
+                  Username / Voucher
+                </span>
+              </label>
+              <label for="Password" class="relative" id="password">
+                <input
+                  type="password"
+                  id="Password"
+                  placeholder=""
+                  name="password"
+                  class="peer w-full rounded border-gray-300 shadow-sm py-2 px-2 focus:outline-indigo-500 sm:text-sm"
+                />
+
+                <span
+                  class="absolute start-3 -translate-y-2 bg-white px-0.5 text-sm font-medium text-gray-700 transition-transform peer-placeholder-shown:translate-y-3 peer-focus:-translate-y-2 peer-focus:text-indigo-500"
+                >
+                  Password
+                </span>
+
+                <span
+                  class="absolute inset-y-0 right-0 grid w-8 place-content-center text-gray-700"
+                >
+                  <i class="fa-solid fa-eye-slash text-gray-500" id="eye"></i>
+                </span>
+              </label>
+            </div>
+            <input
+              class="bg-indigo-500 rounded-xl py-2 text-white font-semibold shadow-md focus:bg-indigo-700"
+              type="submit"
+              value="Connect"
+            />
+          </div>
+        </form>
+      </main>
+      <footer></footer>
+
+      <!-- My Own JS -->
+      <script src="main.js"></script>
+    </div>
+  </body>
+</html>

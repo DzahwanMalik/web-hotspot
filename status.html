@@ -1,0 +1,88 @@
+<html>
+<head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>Internet hotspot - Status</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script>
+
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+</script>
+    
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+    <div class="max-w-sm max-h-screen absolute top-1/2 left-1/2 -translate-1/2">
+        <div class="main">
+            <div class="p-10 shadow-2xl rounded-2xl">
+                $(if login-by == 'trial')
+                    <h1 class="font-bold text-2xl text-center">Hi, trial user!</h1>
+                $(elif login-by != 'mac')
+                    <h1 class="font-bold text-2xl text-center">Hi, $(username)!</h1>
+                $(endif)                
+
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <ul class="flex gap-2 flex-col mb-10">
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">IP Address</span>
+                            <span class="basis-full">: $(ip)</span>
+                        </li>
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">Bytes Up / Down</span>
+                            <span class="basis-full">: $(bytes-in-nice) / $(bytes-out-nice)</span>
+                        </li>
+                        $(if session-time-left)
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">Conected / Left</span>
+                            <span class="basis-full">: $(uptime) / $(session-time-left)</span>
+                        </li>
+                        $(else)
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">Conected</span>
+                            <span class="basis-full">: $(uptime)</span>
+                        </li>
+                        $(endif)
+                        $(if blocked == 'yes')
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">Status</span>
+                            <span class="basis-full"><a href="$(link-advert)" target="hotspot_advert">Advertisement required</a></span>
+                        </li>
+                        $(elif refresh-timeout)
+                        <li class="p-3 rounded-2xl shadow-md flex font-semibold">
+                            <span class="basis-3/5">Status refresh</span>
+                            <span class="basis-full">$(refresh-timeout)</span>
+                        </li>
+                        $(endif)
+                    </ul>
+                    $(if login-by-mac != 'yes')
+                    <!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+                    <button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+                    <!-- end of user manager link -->
+                    <input type="submit" value="Log out" class="bg-indigo-500 text-white text-sm font-semibold px-5 py-2 rounded-md shadow-md w-full cursor-pointer transition-all duration-300 ease-in-out hover:bg-indigo-700">
+                    $(endif)
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
