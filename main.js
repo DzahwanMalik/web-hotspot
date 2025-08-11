@@ -112,6 +112,11 @@ function closeAlert() {
 
   alert.classList.remove("scale-100");
   alert.classList.add("scale-0");
+
+  moveBackground(voucher);
+  voucher.classList.add("text-white");
+  member.classList.remove("text-white");
+  qrCode.classList.remove("text-white");
 }
 
 // Swiper
