@@ -19,19 +19,33 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
-  <body class="bg-white relative overflow-hidden max-h-screen">
+  <body class="bg-white relative">
     <!-- Alert -->
-     <div class="fixed z-50 top-1/2 left-1/2 -translate-1/2 p-5 bg-white shadow-xl rounded-xl font-semibold text-center transition-all duration-300 ease-in-out scale-0" id="alert">
-        <h1 class="mb-3">Fitur Sedang Dalam Pengembangan!</h1>
-        <button class="px-3 py-1 bg-indigo-500 text-white rounded-md" onclick="closeAlert()">Close</button>
-     </div>
-
-
-    <header
-      class="relative w-full aspect-square after:absolute after:z-10 after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent"
+    <div
+      class="fixed z-50 top-1/2 left-1/2 -translate-1/2 p-5 bg-white shadow-xl rounded-xl font-semibold text-center transition-all duration-300 ease-in-out scale-0"
+      id="alert"
     >
-      <div
+      <h1 class="mb-3">Fitur Sedang Dalam Pengembangan!</h1>
+      <button
+        class="px-3 py-1 bg-indigo-500 text-white rounded-md"
+        onclick="closeAlert()"
+      >
+        Close
+      </button>
+    </div>
+
+    <header class="relative w-full aspect-square">
+      <!-- Navbar -->
+      <nav
         class="absolute z-20 top-0 left-0 w-full p-5 flex justify-between items-center transition-all duration-500 ease-in-out"
         id="navbar"
       >
@@ -45,63 +59,130 @@
             </li>
           </ul>
         </span>
-      </div>
-      <div class="absolute z-20 w-full bg-linear-to-b from-indigo-800 to-transparent p-5 transition-all duration-500 ease-in-out -translate-y-full" id="priceMenu">
+      </nav>
+
+      <!-- Menu -->
+      <div
+        class="absolute z-20 w-full bg-linear-to-b from-indigo-800 to-transparent p-5 transition-all duration-500 ease-in-out -translate-y-full"
+        id="priceMenu"
+      >
         <ul class="flex gap-2 flex-col">
-            <li class="flex justify-center mb-2"><button class="px-2 py-1 font-bold border-2 border-white rounded-xl text-white" onclick="closeMenu()">Kembali</button></li>
-            <li class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold">
-                <span class="leading-5">
-                    <h1>Paket Hemat</h1>
-                    <p>2 Jam</p>
-                </span>
-                <span>
-                    <a href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket hemat 2 jam." class="px-3 py-2 border-1 border-white text-white rounded-xl">Beli Sekarang</a>
-                </span>
-            </li>
-            <li class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold">
-                <span class="leading-5">
-                    <h1>Paket Setengah Hari</h1>
-                    <p>6 Jam</p>
-                </span>
-                <span>
-                    <a href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket setengah hari 6 jam." class="px-3 py-2 border-1 border-white text-white rounded-xl">Beli Sekarang</a>
-                </span>
-            </li>
-            <li class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold">
-                <span class="leading-5">
-                    <h1>Paket Seharian</h1>
-                    <p>12 Jam</p>
-                </span>
-                <span>
-                    <a href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket seharian 12 jam" class="px-3 py-2 border-1 border-white text-white rounded-xl">Beli Sekarang</a>
-                </span>
-            </li>
-            <li class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold">
-                <span class="leading-5">
-                    <h1>Paket Full Day</h1>
-                    <p>24 Jam</p>
-                </span>
-                <span>
-                    <a href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket full day 24 jam" class="px-3 py-2 border-1 border-white text-white rounded-xl">Beli Sekarang</a>
-                </span>
-            </li>
-            <li class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold">
-                <span class="leading-5">
-                    <h1>Paket Streaming</h1>
-                    <p>3 Hari</p>
-                </span>
-                <span>
-                    <a href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket streaming 3 hari." class="px-3 py-2 border-1 border-white text-white rounded-xl">Beli Sekarang</a>
-                </span>
-            </li>
+          <li class="flex justify-center mb-2">
+            <button
+              class="px-2 py-1 font-bold border-2 border-white rounded-xl text-white"
+              onclick="closeMenu()"
+            >
+              Kembali
+            </button>
+          </li>
+          <li
+            class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+          >
+            <span class="leading-5">
+              <h1>Paket Hemat</h1>
+              <p>2 Jam</p>
+            </span>
+            <span>
+              <a
+                href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket hemat 2 jam."
+                class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                >Beli Sekarang</a
+              >
+            </span>
+          </li>
+          <li
+            class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+          >
+            <span class="leading-5">
+              <h1>Paket Setengah Hari</h1>
+              <p>6 Jam</p>
+            </span>
+            <span>
+              <a
+                href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket setengah hari 6 jam."
+                class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                >Beli Sekarang</a
+              >
+            </span>
+          </li>
+          <li
+            class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+          >
+            <span class="leading-5">
+              <h1>Paket Seharian</h1>
+              <p>12 Jam</p>
+            </span>
+            <span>
+              <a
+                href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket seharian 12 jam"
+                class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                >Beli Sekarang</a
+              >
+            </span>
+          </li>
+          <li
+            class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+          >
+            <span class="leading-5">
+              <h1>Paket Full Day</h1>
+              <p>24 Jam</p>
+            </span>
+            <span>
+              <a
+                href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket full day 24 jam"
+                class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                >Beli Sekarang</a
+              >
+            </span>
+          </li>
+          <li
+            class="flex justify-between items-center bg-indigo-500 px-3 py-3 rounded-xl text-white font-semibold"
+          >
+            <span class="leading-5">
+              <h1>Paket Streaming</h1>
+              <p>3 Hari</p>
+            </span>
+            <span>
+              <a
+                href="https://wa.me/6287783070985?text=Halo kak, aku mau beli paket streaming 3 hari."
+                class="px-3 py-2 border-1 border-white text-white rounded-xl"
+                >Beli Sekarang</a
+              >
+            </span>
+          </li>
         </ul>
       </div>
-      <img
-        src="assets/banner.jpg"
-        alt=""
-        class="fixed z-10 w-full h-auto object-cover object-center"
-      />
+
+      <!-- Slider main container -->
+      <div class="swiper aspect-square w-full">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper text-center">
+          <!-- Slides -->
+          <div class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent">
+            <img
+              src="assets/banner-1.jpg"
+              alt=""
+              class="min-w-full h-full object-center object-cover"
+            />
+          </div>
+          <div class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent">
+            <img
+              src="assets/banner-2.jpg"
+              alt=""
+              class="min-w-full h-full object-center object-cover"
+            />
+          </div>
+          <div class="swiper-slide after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-linear-to-b after:from-[var(--rgbaBlack)] after:to-transparent">
+            <img
+              src="assets/banner-3.jpg"
+              alt=""
+              class="min-w-full h-full object-center object-cover"
+            />
+          </div>
+        </div>
+      </div>
     </header>
+
     <main
       class="relative z-10 h-[70dvh] bg-white px-7 py-6 rounded-3xl -translate-y-16 shadow-2xl"
     >
@@ -114,7 +195,7 @@
           </p>
         </div>
         <div
-          class="relative flex gap-2 justify-evenly items-center text-xs font-semibold"
+          class="relative flex gap-2 justify-evenly items-center text-sm font-semibold"
           id="containerSwapMode"
         >
           <div
